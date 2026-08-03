@@ -91,6 +91,70 @@
   }
 }
 
+a#botaoComecar {
+  background-color: #0c4128;
+  color: white;
+  background-color: #0c4128; /* Seu verde atual */
+  border-color: #0c4128;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+}
+
+
+
+a#botaoComecar:hover {
+  background-color: green;/* Tom de verde mais claro/vivo para o hover */
+  border-color: #146c43;
+  color: white; /* Garante que o texto continue branco */
+}
+
+a#botaoLogin {
+  background-color: #1a2e17;
+  color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+}
+
+a#botaoLogin:hover{
+  background-color: green; /* Tom de verde mais claro/vivo para o hover */
+  border-color: #146c43;
+  color: white; /* Garante que o texto continue branco */
+
+}
+
+.logo-fundo{
+    position: fixed;
+    bottom: -40px;
+    left: -40px;
+    width: 350px;
+
+    opacity: 0.05;
+    filter: grayscale(100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+a#botaoSobre {
+  background-color: #0c4128;
+  color: white;
+  background-color: #0c4128; /* Seu verde atual */
+  border-color: #0c4128;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+}
+
+a#botaoSobre:hover{
+  background-color: #146c43; /* Tom de verde mais claro/vivo para o hover */
+  border-color: #146c43;
+  color: white; /* Garante que o texto continue branco */
+}
+
+header#menu1 {
+  background-color: #0c4128;
+  color: white;
+}
+
+input {
+  color: #0c4128;
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
@@ -102,6 +166,7 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-family: "Poppins", sans-serif;;
 }
 
 hr {
@@ -130,6 +195,7 @@ h1, .h1 {
 
 h2, .h2 {
   font-size: calc(1.325rem + 0.9vw);
+  color: #1a2e17;
 }
 @media (min-width: 1200px) {
   h2, .h2 {
@@ -340,8 +406,20 @@ label {
   display: inline-block;
 }
 
-button {
-  border-radius: 0;
+button.btn {
+  width: 100%;
+  border-radius: 10;
+  color: #fbfdfa;
+  background-color: #1a2e17;
+  border-color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease; /* Transição suave */
+}
+
+button.btn:hover{
+  background-color: green; /* Tom de verde mais claro/vivo para o hover */
+  border-color: #146c43;
+  color: white; /* Garante que o texto continue branco */
+
 }
 
 button:focus:not(:focus-visible) {
@@ -10877,7 +10955,7 @@ html {
   height: 100%;
   transition: all 0.4s ease 0s;
   transform: translateX(250px);
-  background: #1D809F;
+  background: #1a2e17;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -10973,7 +11051,7 @@ html {
 
 footer.footer {
   padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-bottom: 2rem;
 }
 footer.footer .social-link {
   display: block;
@@ -10982,12 +11060,12 @@ footer.footer .social-link {
   width: 4rem;
   line-height: 4.3rem;
   font-size: 1.5rem;
-  background-color: #1D809F;
+  background-color: #1a2e17;
   transition: background-color 0.15s ease-in-out;
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
 footer.footer .social-link:hover {
-  background-color: #155d74;
+  background-color: green;
   text-decoration: none;
 }
 
