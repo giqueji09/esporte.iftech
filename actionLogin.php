@@ -21,10 +21,11 @@
         $_SESSION['idUsuario']    = $registro['idUsuario'];
         $_SESSION['nomeUsuario']  = $registro['nomeUsuario'];
         $_SESSION['emailUsuario'] = $registro['emailUsuario'];
+        $_SESSION['telefoneUsuario'] = $registro['telefoneUsuario'];
         $_SESSION['logado']       = true;
 
         //Redirecion o usuário para a página inicial
-        header("Location: index.php");
+        header("Location: quadras.php");
         exit();
     }
     else{

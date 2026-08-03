@@ -34,27 +34,17 @@
         <header class="masthead d-flex align-items-center">
             <div class="container px-4 px-lg-5 text-center">
                 <img src="assets/img/reservai_logo.png" alt="Logo ReservAÍ" width="400px">
-                <h3 class="mb-5"><em>Conectando voce ao esporte.</em></h3>
-                <a class="btn btn-success btn-xl" href="quadras.php">COMEÇAR</a>
+                <h3 class="mb-5"><em>Conectando você ao esporte.</em></h3>
+                <a class="btn btn-succes btn-xl" href="quadras.php" id="botaoComecar">COMEÇAR</a>
             </div>
         </header>
         <!-- About-->
-        <section class="content-section bg-light" id="about">
-            <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-10">
-                        <h2>Veja mais sobre o ReservAÍ</h2>
-                        <a class="btn btn-dark btn-xl" href="#services">Sobre</a>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- Services-->
-        <section class="content-section bg-primary text-white text-center" id="services">
+        <section class="content-section bg-success text-white text-center" id="services">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading">
                     <h3 class="text-secondary mb-0">Serviços</h3>
-                    <h2 class="mb-5">O que oferecemos</h2>
+                    <h2 class="mb-5" style="color:white;">O que oferecemos</h2>
                 </div>
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
@@ -88,62 +78,84 @@
         <section class="content-section" id="portfolio">
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
-                    <h3 class="text-secondary mb-0">catálogo</h3>
-                    <h2 class="mb-5">Quadras disponíveis</h2>
+                    <h3 class="text-secondary mb-0">Catálogo</h3>
+                    <h2 class="mb-5">Alguma das Quadras disponíveis</h2>
                 </div>
                 <div class="row gx-0">
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Stationary</div>
-                                    <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                                    <div class="h2" style="color:white;">Quadra IFPR</div>
+                                    <p class="mb-0">Quadra poliesportiva localizada no IFPR, no bairro Jardim Bandeirantes.</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio-1.jpg" alt="..." />
+                            <img class="img-fluid" src="assets/img/interiorQuadraIF2.jpg" height="100%" alt="Interior Quadra IFPR" />
                         </a>
                     </div>
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Ice Cream</div>
-                                    <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
+                                    <div class="h2"></div>
+                                    <p class="mb-0"></p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio-2.jpg" alt="..." />
+                            <img class="img-fluid" src="assets/img/reservaiEmBreve.jpg" alt="Em breve" id="emBreve" />
                         </a>
                     </div>
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Strawberries</div>
-                                    <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
+                                    <div class="h2"></div>
+                                    <p class="mb-0"></p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio-3.jpg" alt="..." />
+                            <img class="img-fluid" src="assets/img/reservaiEmBreve.jpg" alt="Em Breve" />
                         </a>
                     </div>
                     <div class="col-lg-6">
                         <a class="portfolio-item" href="#!">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2">Workspace</div>
-                                    <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
+                                    <div class="h2"></div>
+                                    <p class="mb-0"></p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/portfolio-4.jpg" alt="..." />
+                            <img class="img-fluid" src="assets/img/reservaiEmBreve.jpg" alt="..." />
                         </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        <h2>Veja mais sobre o ReservAÍ</h2>
+                        <a class="btn btn-dark btn-xl" href="#services" id="botaoSobre">Sobre</a>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Map-->
         <div class="map" id="contact">
-            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-            <br />
-            <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
+    <iframe
+        src="https://maps.google.com/maps?q=IFPR%20Campus%20Tel%C3%AAmaco%20Borba,%20Tel%C3%AAmaco%20Borba,%20PR&output=embed"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+    </iframe>
+    <br />
+    <small>
+        <a href="https://maps.google.com/maps?q=IFPR%20Campus%20Tel%C3%AAmaco%20Borba,%20Tel%C3%AAmaco%20Borba,%20PR" target="_blank">
+            Ver no Google Maps
+        </a>
+    </small>
+</div>
 
 
 <?php include "footer.php" ?>

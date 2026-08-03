@@ -1,7 +1,7 @@
 <?php include "header.php" ?>
 
  <div class="d-flex justify-content-center mb-3">
-        <h2>Cadastre-se</h2>
+        <h2>Entre pro time</h2>
     </div>
 
     <div class="d-flex justify-content-center mb-3">

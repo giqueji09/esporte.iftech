@@ -14,7 +14,7 @@
     ?>
 
     <div class="d-flex justify-content-center mb-3">
-        <h2>Acessar o Sistema:</h2>
+        <h2>Faça login e volte pro jogo</h2>
     </div>
 
     <div class="d-flex justify-content-center mb-3">
