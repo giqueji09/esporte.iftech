@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05/08/2026 às 22:50
--- Versão do servidor: 8.4.8
+-- Tempo de geração: 06/08/2026 às 00:47
+-- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `quadras` (
-  `idQuadra` int NOT NULL,
+  `idQuadra` int(11) NOT NULL,
   `fotoQuadra` varchar(200) NOT NULL,
   `nomeQuadra` varchar(100) NOT NULL,
   `esportes` varchar(100) NOT NULL,
   `localizacao` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `quadras`
@@ -50,14 +50,22 @@ INSERT INTO `quadras` (`idQuadra`, `fotoQuadra`, `nomeQuadra`, `esportes`, `loca
 --
 
 CREATE TABLE `reservas` (
-  `idReserva` int NOT NULL,
-  `idReservante` int NOT NULL,
-  `idQuadraReservada` int NOT NULL,
+  `idReserva` int(11) NOT NULL,
+  `idReservante` int(11) NOT NULL,
+  `idQuadraReservada` int(11) NOT NULL,
   `dataReserva` date NOT NULL,
   `horarioInicio` time NOT NULL,
   `horarioFim` time NOT NULL,
-  `statusReserva` varchar(50) DEFAULT 'agendado'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `statusReserva` varchar(50) NOT NULL DEFAULT 'agendado'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `reservas`
+--
+
+INSERT INTO `reservas` (`idReserva`, `idReservante`, `idQuadraReservada`, `dataReserva`, `horarioInicio`, `horarioFim`, `statusReserva`) VALUES
+(1, 1, 1, '2026-08-26', '15:30:00', '17:30:00', 'agendado'),
+(2, 1, 2, '2026-08-24', '21:00:00', '23:00:00', 'agendado');
 
 -- --------------------------------------------------------
 
@@ -66,13 +74,13 @@ CREATE TABLE `reservas` (
 --
 
 CREATE TABLE `usuarios` (
-  `idUsuario` int NOT NULL,
+  `idUsuario` int(11) NOT NULL,
   `nomeUsuario` varchar(100) NOT NULL,
   `dataNascimentoUsuario` date NOT NULL,
   `telefoneUsuario` char(11) NOT NULL,
   `emailUsuario` varchar(100) NOT NULL,
   `senhaUsuario` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
@@ -117,19 +125,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `quadras`
 --
 ALTER TABLE `quadras`
-  MODIFY `idQuadra` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idQuadra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int NOT NULL AUTO_INCREMENT;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restrições para tabelas despejadas
