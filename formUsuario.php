@@ -1,8 +1,9 @@
 <?php include "header.php" ?>
 
- <div class="d-flex justify-content-center mb-3">
+
+<div class="d-flex justify-content-center mb-3">
         <h2>Entre pro time</h2>
-    </div>
+</div>
 
     <div class="d-flex justify-content-center mb-3">
         <form action="actionUsuario.php" method="POST" class="was-validated" enctype="multipart/form-data">

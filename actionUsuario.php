@@ -171,3 +171,5 @@
             return($dado);
         }
     ?>
+
+    <?php include "footer.php" ?>

@@ -66,7 +66,7 @@
             </li>
 
             <li class="sidebar-nav-item">
-                <a href="minhasReservas.php">Minhas reservas</a>
+                <a href="#minhasReservas.php">Minhas reservas</a>
             </li>
 
             <li class="sidebar-nav-item">
@@ -105,7 +105,7 @@
             <div class="container px-4 px-lg-5 my-3">
                 <div class="text-center text-white">
                     <img src="assets/img/reservai_logo2.png" style="width: 150px" class="pb-2">
-                    <p class="lead fw-normal text-white mb-0 audiowide-regular">Reservas de quadras faclitadas para você!</p>
+                    <p class="lead fw-normal text-white mb-0 audiowide-regular">Conectando você ao esporte.</p>
                 </div>
             </div>
         </header>
