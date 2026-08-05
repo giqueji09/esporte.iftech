@@ -3,98 +3,108 @@
     <?php
         // Verifica se o método de envio das informações do form é "POST"
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            // Cria variáveis para armazenar as informações recebidas do array $_POST
-            // (Adicionei as variáveis que faltavam e que você usa no INSERT)
-            $nomeUsuario = $nomeQuadra = $dataReserva = "";
-            $idReservante = ["idReservante"];
-            $idQuadraReservada = ["idQuadra"];
-
-            // Variável booleana para controle de erros de preenchimento
+            
+            $idReservante = $idQuadraReservada = $dataReserva = $horarioInicio = $horarioFim = "";
             $erroPreenchimento = false;
 
-            // Validação do campo nomeUsuario
-            if(empty($_POST["nomeUsuario"])){
-                echo "<div class='alert alert-warning text-center'>O campo <strong>NOME</strong> é obrigatório!</div>";
+            if(empty($_POST["idReservante"])){
+                echo "<div class='alert alert-warning text-center'>Erro de identificação do usuário. Faça login novamente!</div>";
                 $erroPreenchimento = true;
-            }
-            else{
-                $nomeUsuario = filtrar_entrada($_POST["nomeUsuario"]);
-
-                if(!preg_match('/^[\p{L} ]+$/u', $nomeUsuario)){
-                    echo "<div class='alert alert-warning text-center'>O campo <strong>NOME</strong> deve conter apenas letras!</div>";
-                    $erroPreenchimento = true;
-                }
+            } else {
+                $idReservante = filtrar_entrada($_POST["idReservante"]);
             }
 
-            // Validação do campo nomeQuadra
             if(empty($_POST["nomeQuadra"])){
-                echo "<div class='alert alert-warning text-center'>O campo <strong>NOME QUADRA</strong> é obrigatório!</div>";
+                echo "<div class='alert alert-warning text-center'>O campo <strong>QUADRA</strong> é obrigatório!</div>";
                 $erroPreenchimento = true;
+            } else {
+                $idQuadraReservada = filtrar_entrada($_POST["nomeQuadra"]);
             }
-            else{
-                $nomeQuadra = filtrar_entrada($_POST["nomeQuadra"]);
-            } // <--- CORREÇÃO: Chave fechada aqui!
 
-            // Validação do campo dataReserva
+            // Validação da Data de Reserva
             if(empty($_POST["dataReserva"])){
                 echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE RESERVA</strong> é obrigatório!</div>";
                 $erroPreenchimento = true;
-            }
-            else{
+            } else {
                 $dataReserva = filtrar_entrada($_POST["dataReserva"]);
+            } 
 
-                if(strlen($dataReserva) == 10){
-                    $diaReserva = substr($dataReserva, 8, 2);
-                    $mesReserva = substr($dataReserva, 5, 2);
-                    $anoReserva = substr($dataReserva, 0, 4);
-                }
-                else{
-                    echo "<div class='alert alert-warning text-center'><strong>DATA</strong> inválida!</div>";
-                    $erroPreenchimento = true;
-                }
-            } // <--- CORREÇÃO: Chave fechada aqui!
+            // Validação do Horário de Início
+            if(empty($_POST["horarioInicio"])){
+                echo "<div class='alert alert-warning text-center'>O campo <strong>HORÁRIO DE INÍCIO</strong> é obrigatório!</div>";
+                $erroPreenchimento = true;
+            } else {
+                $horarioInicio = filtrar_entrada($_POST["horarioInicio"]);
+            }
 
-            // Pegar demais dados enviados pelo formulário para não irem vazios para o banco
-            if(!empty($_POST["telefoneUsuario"])) { $telefoneUsuario = filtrar_entrada($_POST["telefoneUsuario"]); }
-            if(!empty($_POST["emailUsuario"])) { $emailUsuario = filtrar_entrada($_POST["emailUsuario"]); }
-            if(!empty($_POST["senhaUsuario"])) { $senhaUsuario = filtrar_entrada($_POST["senhaUsuario"]); }
+            // Validação do Horário de Término
+            if(empty($_POST["horarioFim"])){
+                echo "<div class='alert alert-warning text-center'>O campo <strong>HORÁRIO DE TÉRMINO</strong> é obrigatório!</div>";
+                $erroPreenchimento = true;
+            } else {
+                $horarioFim = filtrar_entrada($_POST["horarioFim"]);
+            }
 
-            // Verifica se não há erro de preenchimento
+// Executa a inserção se não houver erros
             if(!$erroPreenchimento){
 
-                // Cria uma variável para armazenar a QUERY
-                $inserirUsuario = "INSERT INTO reservas (nomeUsuario, dataReserva, telefoneUsuario, emailUsuario, senhaUsuario) VALUES ('$nomeUsuario', '$dataReserva', '$telefoneUsuario', '$emailUsuario', '$senhaUsuario')";
+                // Query alinhada com a estrutura da tabela
+                $inserirReserva = "INSERT INTO reservas (idReservante, idQuadraReservada, dataReserva, horarioInicio, horarioFim) 
+                                   VALUES ('$idReservante', '$idQuadraReservada', '$dataReserva', '$horarioInicio', '$horarioFim')";
 
-                // Inclui o arquivo de conexão com o Banco de Dados
+                // Inclui o arquivo de conexão
                 include "conexaoBD.php";
                 
                 // Executa a QUERY
-                if(mysqli_query($conn, $inserirUsuario)){
-                    echo "<div class='alert alert-success text-center'>O cadastro do <strong>USUÁRIO</strong> foi efetuado com sucesso!</div>";
+                if(mysqli_query($conn, $inserirReserva)){
+
+                    $nomeDoUsuarioExibicao = "";
+                    if(isset($_POST["nomeUsuario"])){
+                        $nomeDoUsuarioExibicao = filtrar_entrada($_POST["nomeUsuario"]);
+                    }
+
+                    $nomeDaQuadraExibicao = "ID: " . $idQuadraReservada; // Valor de fallback
+                    $buscarNomeQuadra = "SELECT nomeQuadra FROM Quadras WHERE idQuadra = '$idQuadraReservada'";
+                    $resultadoQuadra = mysqli_query($conn, $buscarNomeQuadra);
+                    
+                    if($registroQuadra = mysqli_fetch_assoc($resultadoQuadra)){
+                        $nomeDaQuadraExibicao = $registroQuadra['nomeQuadra'];
+                    }
+
+                    //Usa a função mysqli_query() para executar a QUERY no Banco de Dados
+                    //Se conseguir, exibe alerta de sucesso e tabela com os dados informados
+                    echo "<div class='alert alert-success text-center'>A <strong>RESERVA</strong> foi efetuada com sucesso!</div>";
                     echo "
-                        <div class='container'>
                             <table class='table'>
                                 <tr>
-                                    <th>NOME</th>
-                                    <td>$nomeUsuario</td>
+                                    <th>NOME DO RESERVANTE</th>
+                                    <td>$nomeDoUsuarioExibicao</td>
                                 </tr>
                                 <tr>
-                                    <th>DATA DE RESERVA</th>
-                                    <td>$diaReserva/$mesReserva/$anoReserva</td>
+                                    <th>QUADRA</th>
+                                    <td>$nomeDaQuadraExibicao</td>
+                                </tr>
+                                <tr>
+                                    <th>DATA</th>
+                                    <td>".date('d/m/Y', strtotime($dataReserva))."</td>
+                                </tr>
+                                <tr>
+                                    <th>HORÁRIO</th>
+                                    <td>$horarioInicio às $horarioFim</td>
                                 </tr>
                             </table>
-                        </div>
                     ";
                 }
                 else{
-                    echo "<div class='alert alert-danger text-center'>Erro ao tentar cadastrar <strong>USUÁRIO</strong> no banco de dados!</div>";
+                    echo "<div class='alert alert-danger text-center'>Erro ao tentar cadastrar a <strong>RESERVA</strong> no banco de dados!</div>";
                 }
             }
 
         }
         else{
-            header("location:formUsuario.php");
-            exit(); // Boa prática após redirecionamentos
+            //Usa a função header() para redirecionar o usuário para o formUsuario.php
+            header("location:quadras.php");
+            exit(); 
         }
 
         // Função para filtrar entrada de dados

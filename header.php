@@ -70,7 +70,7 @@
             </li>
 
             <li class="sidebar-nav-item">
-                <a href="#about">Quadras</a>
+                <a href="quadras.php">Quadras</a>
             </li>
 
             <li class="sidebar-nav-item">
@@ -88,7 +88,7 @@
             </li>
 
             <li class="sidebar-nav-item">
-                <a href="#about">Quadras</a>
+                <a href="quadras.php">Quadras</a>
             </li>
 
             <li class="sidebar-nav-item">
