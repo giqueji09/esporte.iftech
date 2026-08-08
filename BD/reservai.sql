@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06/08/2026 às 00:47
+-- Tempo de geração: 08/08/2026 às 18:14
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -64,8 +64,9 @@ CREATE TABLE `reservas` (
 --
 
 INSERT INTO `reservas` (`idReserva`, `idReservante`, `idQuadraReservada`, `dataReserva`, `horarioInicio`, `horarioFim`, `statusReserva`) VALUES
-(1, 1, 1, '2026-08-26', '15:30:00', '17:30:00', 'agendado'),
-(2, 1, 2, '2026-08-24', '21:00:00', '23:00:00', 'agendado');
+(2, 1, 2, '2026-08-24', '21:00:00', '23:00:00', 'agendado'),
+(4, 7, 1, '2026-09-09', '11:00:00', '13:00:00', 'agendado'),
+(6, 1, 1, '2026-09-09', '14:00:00', '16:00:00', 'cancelada');
 
 -- --------------------------------------------------------
 
@@ -75,6 +76,7 @@ INSERT INTO `reservas` (`idReserva`, `idReservante`, `idQuadraReservada`, `dataR
 
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
+  `cpfUsuario` char(11) NOT NULL,
   `nomeUsuario` varchar(100) NOT NULL,
   `dataNascimentoUsuario` date NOT NULL,
   `telefoneUsuario` char(11) NOT NULL,
@@ -86,12 +88,13 @@ CREATE TABLE `usuarios` (
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `nomeUsuario`, `dataNascimentoUsuario`, `telefoneUsuario`, `emailUsuario`, `senhaUsuario`) VALUES
-(1, 'Cesar Augusto', '2008-05-02', '42998069904', '20241tbor0020025@estudantes.ifpr.edu.br', '281d5cbef8ded4e9bee409e3b9c67ab2'),
-(3, 'Miguel Gustavo', '2009-04-02', '42998643553', 'miguelgustavovm27@gmail.com', 'a5aad544b38a088b35b395645efe0d61'),
-(4, 'Alan de Souza Vanes', '2008-06-06', '66996309666', 'baixinhodesouzaa@gmail.com', '564f4bcd11273b8ea6b49fbe2dc2ad1c'),
-(5, 'Fulano', '2001-11-07', '42900000000', 'fulano@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(6, 'ciclano', '1998-02-21', '42933333333', 'ciclano@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b');
+INSERT INTO `usuarios` (`idUsuario`, `cpfUsuario`, `nomeUsuario`, `dataNascimentoUsuario`, `telefoneUsuario`, `emailUsuario`, `senhaUsuario`) VALUES
+(1, '13300080900', 'Cesar Augusto', '2008-05-02', '42998069904', '20241tbor0020025@estudantes.ifpr.edu.br', '281d5cbef8ded4e9bee409e3b9c67ab2'),
+(3, '48260112965', 'Miguel Gustavo', '2009-04-02', '42998643553', 'miguelgustavovm27@gmail.com', 'a5aad544b38a088b35b395645efe0d61'),
+(4, '36528291900', 'Alan de Souza Vanes', '2008-06-06', '66996309666', 'baixinhodesouzaa@gmail.com', '564f4bcd11273b8ea6b49fbe2dc2ad1c'),
+(5, '97194506904', 'Fulano', '2001-11-07', '42900000000', 'fulano@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+(6, '60533326907', 'ciclano', '1998-02-21', '42933333333', 'ciclano@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b'),
+(7, '04533601901', 'Júlio', '2004-10-08', '42987654321', 'julio@gmail.com', '113180fa10fcf7a118ecdbcd21c4cd24');
 
 --
 -- Índices para tabelas despejadas
@@ -115,7 +118,8 @@ ALTER TABLE `reservas`
 -- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`idUsuario`);
+  ADD PRIMARY KEY (`idUsuario`),
+  ADD UNIQUE KEY `cpfUsuario` (`cpfUsuario`);
 
 --
 -- AUTO_INCREMENT para tabelas despejadas
@@ -131,13 +135,13 @@ ALTER TABLE `quadras`
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restrições para tabelas despejadas
