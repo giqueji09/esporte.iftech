@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/08/2026 às 18:14
+-- Tempo de geração: 08/08/2026 às 22:38
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -32,16 +32,18 @@ CREATE TABLE `quadras` (
   `fotoQuadra` varchar(200) NOT NULL,
   `nomeQuadra` varchar(100) NOT NULL,
   `esportes` varchar(100) NOT NULL,
-  `localizacao` varchar(100) NOT NULL
+  `localizacao` varchar(100) NOT NULL,
+  `horarioAbertura` time NOT NULL,
+  `horarioFechamento` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `quadras`
 --
 
-INSERT INTO `quadras` (`idQuadra`, `fotoQuadra`, `nomeQuadra`, `esportes`, `localizacao`) VALUES
-(1, 'assets/img/interiorQuadraIF2.jpg', 'Quadra IFPR', 'poliesportiva', 'PR-160, km 19,5 Jardim Bandeirantes, Telêmaco Borba - PR'),
-(2, 'assets/img/interiorQuadraIF2.jpg', 'Quadra Teste', 'Teste', 'Teste Teste Teste');
+INSERT INTO `quadras` (`idQuadra`, `fotoQuadra`, `nomeQuadra`, `esportes`, `localizacao`, `horarioAbertura`, `horarioFechamento`) VALUES
+(1, 'assets/img/interiorQuadraIF2.jpg', 'Quadra IFPR', 'poliesportiva', 'PR-160, km 19,5 Jardim Bandeirantes, Telêmaco Borba - PR', '07:30:00', '22:00:00'),
+(2, 'assets/img/interiorQuadraIF2.jpg', 'Quadra Teste', 'Teste', 'Teste Teste Teste', '08:00:00', '21:00:00');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,9 @@ CREATE TABLE `reservas` (
 INSERT INTO `reservas` (`idReserva`, `idReservante`, `idQuadraReservada`, `dataReserva`, `horarioInicio`, `horarioFim`, `statusReserva`) VALUES
 (2, 1, 2, '2026-08-24', '21:00:00', '23:00:00', 'agendado'),
 (4, 7, 1, '2026-09-09', '11:00:00', '13:00:00', 'agendado'),
-(6, 1, 1, '2026-09-09', '14:00:00', '16:00:00', 'cancelada');
+(6, 1, 1, '2026-09-09', '14:00:00', '16:00:00', 'cancelada'),
+(7, 7, 1, '2026-08-08', '10:00:00', '11:00:00', 'concluída'),
+(9, 7, 1, '2026-08-31', '12:00:00', '13:00:00', 'agendado');
 
 -- --------------------------------------------------------
 
@@ -135,7 +139,7 @@ ALTER TABLE `quadras`
 -- AUTO_INCREMENT de tabela `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idReserva` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
