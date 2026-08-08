@@ -1,6 +1,7 @@
 <?php include "header.php" ?>
 
     <?php
+        
         // Verifica se o método de envio das informações do form é "POST"
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             
@@ -65,6 +66,27 @@
                     $erroPreenchimento = true;
                 }
 
+                date_default_timezone_set('America/Sao_Paulo');
+
+                if(!$erroPreenchimento){
+                    $dataAtual = date('Y-m-d');
+                    
+                    if($dataReserva < $dataAtual){
+                        echo "<div class='alert alert-warning text-center'>Não é possível realizar reservas para <strong>datas que já passaram</strong>!</div>";
+                        $erroPreenchimento = true;
+                    } 
+                    else if ($dataReserva == $dataAtual) {
+                        $horarioAtual = date('H:i');
+                        if($horarioInicio < $horarioAtual){
+                            echo "<div class='alert alert-warning text-center'>Não é possível agendar para um <strong>horário que já passou</strong> no dia de hoje!</div>";
+                            $erroPreenchimento = true;
+                        }
+                    }
+                }
+
+                //Validação de Duração (Máximo de 2 horas e término após o início)
+                $inicioTimestamp = strtotime($horarioInicio);
+
                 //Apenas uma reserva por dia por usuário
                 if(!$erroPreenchimento){
                     $checarReservaUsuario = "SELECT idReserva FROM reservas WHERE idReservante = '$idReservante' AND dataReserva = '$dataReserva'";
@@ -88,8 +110,14 @@
                     }
                 }
 
+
+
                 // Se passou por todas as regras de negócio, executa a inserção
                 if(!$erroPreenchimento){
+
+                    
+                    
+                    if($horarioInicio)
                     // Query alinhada com a estrutura da tabela
                     $inserirReserva = "INSERT INTO reservas (idReservante, idQuadraReservada, dataReserva, horarioInicio, horarioFim) 
                                        VALUES ('$idReservante', '$idQuadraReservada', '$dataReserva', '$horarioInicio', '$horarioFim')";

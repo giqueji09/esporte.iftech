@@ -46,7 +46,12 @@
     </div>
 
             <div class="form-floating mt-3 mb-3">
-                <input type="date" name="dataReserva" id="dataReserva" placeholder="dataReserva" class="form-control">
+                <?php 
+                    date_default_timezone_set('America/Sao_Paulo'); 
+                    $dataMinima = date('Y-m-d'); 
+                ?>
+                
+                <input type="date" name="dataReserva" id="dataReserva" class="form-control" min="<?php echo $dataMinima; ?>">
                 <label for="dataReserva">Data Reserva</label>
                 <div class="valid-feedback"></div>
                 <div class="invalid-feedback"></div>

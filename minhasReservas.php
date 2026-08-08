@@ -3,6 +3,14 @@
 <?php 
     echo "<h1>Reservas de $primeiroNome</h1>";
     include "conexaoBD.php";
+    $atualizarStatusConcluido = "
+        UPDATE reservas
+        SET statusReserva = 'concluída'
+        WHERE statusReserva = 'agendado'
+        AND CONCAT(dataReserva, ' ', horarioFim) <= NOW()";
+
+        mysqli_query($conn, $atualizarStatusConcluido);
+
     $reservasUsuario = "
    SELECT
         reservas.idReserva,
@@ -54,10 +62,13 @@
         $statusReserva       = $reservas['statusReserva'];
 
         $botaoCancelar = "";
-        if($statusReserva != 'cancelada'){
+        
+        if($statusReserva == 'agendado'){
             $botaoCancelar = "<a href='cancelarReserva.php?id=$idReserva' class='btn btn-danger btn-sm' title='Cancelar reserva'><i class='bi bi-x-circle'></i> Cancelar</a>";
-        } else{
+        } else if($statusReserva == 'cancelada'){
             $botaoCancelar = "<span class='text-muted'>Já Cancelada</span>";
+        } else if($statusReserva == 'concluída') {
+            $botaoCancelar = "<span class='text-success'>Já Concluída</span>";
         }
 
         //4ª Parte: Exibe os registros armazenados nas variáveis
