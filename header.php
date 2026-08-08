@@ -66,16 +66,13 @@
             </li>
 
             <li class="sidebar-nav-item">
-                <a href="#minhasReservas.php">Minhas reservas</a>
+                <a href="minhasReservas.php">Minhas reservas</a>
             </li>
 
             <li class="sidebar-nav-item">
                 <a href="quadras.php">Quadras</a>
             </li>
 
-            <li class="sidebar-nav-item">
-                <a href="#services">Suporte</a>
-            </li>
 
             <li class="sidebar-nav-item">
                 <a href="logout.php">Sair</a>
@@ -91,9 +88,6 @@
                 <a href="quadras.php">Quadras</a>
             </li>
 
-            <li class="sidebar-nav-item">
-                <a href="#services">Suporte</a>
-            </li>
 
         <?php } ?>
 

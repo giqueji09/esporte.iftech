@@ -54,17 +54,19 @@
             
 
             <div class="form-floating mt-3 mb-3">
-                <input type="time" name="horarioInicio" id="horarioInicio" placeholder="Horário para começar a usar a quadra" class="form-control">
+                <input type="time" name="horarioInicio" id="horarioInicio" placeholder="Horário para começar a usar a quadra" class="form-control" step="3600">
                 <label for="horarioInicio">Horario inicio de uso</label>
                 <div class="valid-feedback"></div>
                 <div class="invalid-feedback"></div>
+                <div class="invalid-feedback">O horário deve ser em horas cheias (ex: 13:00).</div>
             </div>
 
             <div class="form-floating mt-3 mb-3">
-                <input type="time" name="horarioFim" id="horarioInicio" placeholder="Horário para terminar de usar a quadra" class="form-control">
+                <input type="time" name="horarioFim" id="horarioFim" placeholder="Horário para terminar de usar a quadra" class="form-control" step="3600">
                 <label for="horarioFim">Horario do término de uso</label>
                 <div class="valid-feedback"></div>
                 <div class="invalid-feedback"></div>
+                <div class="invalid-feedback">O horário deve ser em horas cheias (ex: 13:00).</div>
             </div>
             <button type="submit" class="btn btn-outline-dark">Cadastrar</button>
 

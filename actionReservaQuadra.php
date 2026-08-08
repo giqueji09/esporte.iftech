@@ -45,64 +45,105 @@
                 $horarioFim = filtrar_entrada($_POST["horarioFim"]);
             }
 
-// Executa a inserção se não houver erros
+            // Executa as verificações de regras de negócio se não houver erros básicos de preenchimento
             if(!$erroPreenchimento){
-
-                // Query alinhada com a estrutura da tabela
-                $inserirReserva = "INSERT INTO reservas (idReservante, idQuadraReservada, dataReserva, horarioInicio, horarioFim) 
-                                   VALUES ('$idReservante', '$idQuadraReservada', '$dataReserva', '$horarioInicio', '$horarioFim')";
-
-                // Inclui o arquivo de conexão
-                include "conexaoBD.php";
                 
-                // Executa a QUERY
-                if(mysqli_query($conn, $inserirReserva)){
+                // Inclui o arquivo de conexão mais cedo para poder fazer as consultas de validação
+                include "conexaoBD.php";
 
-                    $nomeDoUsuarioExibicao = "";
-                    if(isset($_POST["nomeUsuario"])){
-                        $nomeDoUsuarioExibicao = filtrar_entrada($_POST["nomeUsuario"]);
-                    }
-
-                    $nomeDaQuadraExibicao = "ID: " . $idQuadraReservada; // Valor de fallback
-                    $buscarNomeQuadra = "SELECT nomeQuadra FROM Quadras WHERE idQuadra = '$idQuadraReservada'";
-                    $resultadoQuadra = mysqli_query($conn, $buscarNomeQuadra);
-                    
-                    if($registroQuadra = mysqli_fetch_assoc($resultadoQuadra)){
-                        $nomeDaQuadraExibicao = $registroQuadra['nomeQuadra'];
-                    }
-
-                    //Usa a função mysqli_query() para executar a QUERY no Banco de Dados
-                    //Se conseguir, exibe alerta de sucesso e tabela com os dados informados
-                    echo "<div class='alert alert-success text-center'>A <strong>RESERVA</strong> foi efetuada com sucesso!</div>";
-                    echo "
-                            <table class='table'>
-                                <tr>
-                                    <th>NOME DO RESERVANTE</th>
-                                    <td>$nomeDoUsuarioExibicao</td>
-                                </tr>
-                                <tr>
-                                    <th>QUADRA</th>
-                                    <td>$nomeDaQuadraExibicao</td>
-                                </tr>
-                                <tr>
-                                    <th>DATA</th>
-                                    <td>".date('d/m/Y', strtotime($dataReserva))."</td>
-                                </tr>
-                                <tr>
-                                    <th>HORÁRIO</th>
-                                    <td>$horarioInicio às $horarioFim</td>
-                                </tr>
-                            </table>
-                    ";
+                //Validação de Duração (Máximo de 2 horas e término após o início)
+                $inicioTimestamp = strtotime($horarioInicio);
+                $fimTimestamp = strtotime($horarioFim);
+                $diferencaSegundos = $fimTimestamp - $inicioTimestamp;
+                
+                // 7200 segundos = 2 horas (60 * 60 * 2)
+                if($diferencaSegundos <= 0){
+                    echo "<div class='alert alert-warning text-center'>O horário de término deve ser posterior ao horário de início!</div>";
+                    $erroPreenchimento = true;
+                } else if ($diferencaSegundos > 7200) {
+                    echo "<div class='alert alert-warning text-center'>Só são permitidas reservas de no máximo <strong>2 horas</strong>!</div>";
+                    $erroPreenchimento = true;
                 }
-                else{
-                    echo "<div class='alert alert-danger text-center'>Erro ao tentar cadastrar a <strong>RESERVA</strong> no banco de dados!</div>";
+
+                //Apenas uma reserva por dia por usuário
+                if(!$erroPreenchimento){
+                    $checarReservaUsuario = "SELECT idReserva FROM reservas WHERE idReservante = '$idReservante' AND dataReserva = '$dataReserva'";
+                    $resultadoUsuario = mysqli_query($conn, $checarReservaUsuario);
+                    
+                    if(mysqli_num_rows($resultadoUsuario) > 0){
+                        echo "<div class='alert alert-warning text-center'>Você já possui uma reserva agendada para o dia <strong>".date('d/m/Y', strtotime($dataReserva))."</strong>. É permitida apenas uma reserva por dia!</div>";
+                        $erroPreenchimento = true;
+                    }
+                }
+
+                //Prevenção de conflito de horários no mesmo local
+                if(!$erroPreenchimento){
+                    // A lógica verifica se existe alguma reserva onde o Início é menor que o Novo Fim E o Fim é maior que o Novo Início
+                    $checarConflitoLocal = "SELECT idReserva FROM reservas WHERE idQuadraReservada = '$idQuadraReservada' AND dataReserva = '$dataReserva' AND horarioInicio < '$horarioFim' AND horarioFim > '$horarioInicio'";
+                    $resultadoConflito = mysqli_query($conn, $checarConflitoLocal);
+                    
+                    if(mysqli_num_rows($resultadoConflito) > 0){
+                        echo "<div class='alert alert-warning text-center'>Este horário já está reservado ou entra em conflito com outra reserva nesta quadra!</div>";
+                        $erroPreenchimento = true;
+                    }
+                }
+
+                // Se passou por todas as regras de negócio, executa a inserção
+                if(!$erroPreenchimento){
+                    // Query alinhada com a estrutura da tabela
+                    $inserirReserva = "INSERT INTO reservas (idReservante, idQuadraReservada, dataReserva, horarioInicio, horarioFim) 
+                                       VALUES ('$idReservante', '$idQuadraReservada', '$dataReserva', '$horarioInicio', '$horarioFim')";
+                    
+                    // Executa a QUERY principal
+                    if(mysqli_query($conn, $inserirReserva)){
+
+                        $nomeDoUsuarioExibicao = "";
+                        if(isset($_POST["nomeUsuario"])){
+                            $nomeDoUsuarioExibicao = filtrar_entrada($_POST["nomeUsuario"]);
+                        }
+
+                        $nomeDaQuadraExibicao = "ID: " . $idQuadraReservada; // Valor de fallback
+                        $buscarNomeQuadra = "SELECT nomeQuadra FROM Quadras WHERE idQuadra = '$idQuadraReservada'";
+                        $resultadoQuadra = mysqli_query($conn, $buscarNomeQuadra);
+                        
+                        if($registroQuadra = mysqli_fetch_assoc($resultadoQuadra)){
+                            $nomeDaQuadraExibicao = $registroQuadra['nomeQuadra'];
+                        }
+
+                        // Exibe alerta de sucesso e tabela com os dados informados
+                        echo "<div class='alert alert-success text-center'>A <strong>RESERVA</strong> foi efetuada com sucesso!</div>";
+                        echo "
+                            <div class='container'>
+                                <table class='table'>
+                                    <tr>
+                                        <th>NOME DO RESERVANTE</th>
+                                        <td>$nomeDoUsuarioExibicao</td>
+                                    </tr>
+                                    <tr>
+                                        <th>QUADRA</th>
+                                        <td>$nomeDaQuadraExibicao</td>
+                                    </tr>
+                                    <tr>
+                                        <th>DATA</th>
+                                        <td>".date('d/m/Y', strtotime($dataReserva))."</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HORÁRIO</th>
+                                        <td>$horarioInicio às $horarioFim</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        ";
+                    }
+                    else{
+                        echo "<div class='alert alert-danger text-center'>Erro ao tentar cadastrar a <strong>RESERVA</strong> no banco de dados!</div>";
+                    }
                 }
             }
 
         }
         else{
-            //Usa a função header() para redirecionar o usuário para o formUsuario.php
+            // Redireciona o usuário
             header("location:quadras.php");
             exit(); 
         }
