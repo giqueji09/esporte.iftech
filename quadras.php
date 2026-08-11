@@ -19,6 +19,11 @@
         $idQuadra   = $Quadra['idQuadra'];
         $fotoQuadra = $Quadra['fotoQuadra'];
         $nomeQuadra = $Quadra['nomeQuadra'];
+        $horarioAbertura = $Quadra['horarioAbertura'];
+        $horarioFechamento = $Quadra['horarioFechamento'];
+
+        $horarioAberturaCortada =  substr($horarioAbertura, 0, 5);
+        $horarioFechamentoCortada = substr($horarioFechamento, 0, 5);
 
         // Cada quadra ganha sua própria coluna (ex: 4 quadras por linha em telas grandes)
         echo "
@@ -28,12 +33,13 @@
                         <img class='img-fluid w-100 h-100' src='$fotoQuadra' style='object-fit: cover;'/>
                     </div>
                     <div class='h5 text-center' style='color: #1a2e17;'>$nomeQuadra</div>
+                    <div class='p text-center' style='color: #1a2e17;'>Abre $horarioAberturaCortada até $horarioFechamentoCortada</div>
+
                 </a>
             </div>
         ";
     }
 
-    // Fecha a linha da grade após o loop
     echo "</div>";
 ?>
 
