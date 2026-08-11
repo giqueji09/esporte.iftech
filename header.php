@@ -12,6 +12,7 @@
         $nomeUsuario  = $_SESSION['nomeUsuario'];
         $emailUsuario = $_SESSION['emailUsuario'];
         $telefoneUsuario = $_SESSION['telefoneUsuario'];
+        $nivelUsuario = $_SESSION['nivelUsuario'];
 
         $nomeCompleto = explode(' ', $nomeUsuario); //Usa a função explode para fragmentar o nome do usuário
         $primeiroNome = $nomeCompleto[0]; //Armazena na primeira posição do array o primeiro fragmento do nome
@@ -57,39 +58,72 @@
     <ul class="sidebar-nav">
         <li class="sidebar-brand"><a href="index.php" title="Ir a página inicial">ReservAÍ</a></li>
 
-        <?php if(isset($_SESSION['logado']) && $_SESSION['logado'] === true){ ?>
+        <?php
+            //Verifica se há sessão ativa
+            if(isset($_SESSION['logado']) && $_SESSION['logado'] === true){
+                if($nivelUsuario == 'administrador'){
+                    echo "
+                       <li class='sidebar-nav-item'>
+                            <a href='#perfil.php'>
+                                Olá, $primeiroNome! 
+                            </a>
+                        </li>
 
-            <li class="sidebar-nav-item">
-                <a href="#perfil.php">
-                    Olá, <?php echo htmlspecialchars($primeiroNome); ?>
-                </a>
-            </li>
+                        <li class='sidebar-nav-item'>
+                            <a href='minhasReservas.php'>Minhas reservas</a>
+                        </li>
 
-            <li class="sidebar-nav-item">
-                <a href="minhasReservas.php">Minhas reservas</a>
-            </li>
-
-            <li class="sidebar-nav-item">
-                <a href="quadras.php">Quadras</a>
-            </li>
-
-
-            <li class="sidebar-nav-item">
-                <a href="logout.php">Sair</a>
-            </li>
-
-        <?php } else { ?>
-
-            <li class="sidebar-nav-item">
-                <a href="formLogin.php" title="Volte ao jogo!">Login</a>
-            </li>
-
-            <li class="sidebar-nav-item">
-                <a href="quadras.php">Quadras</a>
-            </li>
+                        <li class='sidebar-nav-item'>
+                            <a href='quadras.php'>Quadras</a>
+                        </li>
 
 
-        <?php } ?>
+                        <li class='sidebar-nav-item'>
+                            <a href='formQuadras.php'>Cadastrar Quadras</a>
+                        </li>
+
+                        <li class='sidebar-nav-item'>
+                            <a href='logout.php'>Sair</a>
+                        </li>
+
+                    ";
+                }
+                else{
+                    echo "
+                       <li class='sidebar-nav-item'>
+                            <a href='#perfil.php'>
+                                Olá, $primeiroNome!
+                            </a>
+                        </li>
+
+                        <li class='sidebar-nav-item'>
+                            <a href='minhasReservas.php'>Minhas reservas</a>
+                        </li>
+
+                        <li class='sidebar-nav-item'>
+                            <a href='quadras.php'>Quadras</a>
+                        </li>
+
+
+                        <li class='sidebar-nav-item'>
+                            <a href='logout.php'>Sair</a>
+                        </li>
+
+                    ";
+                }
+            }
+            else{
+                echo "
+                    <li class='sidebar-nav-item'>
+                        <a href='formLogin.php' title='Volte ao jogo!'>Login</a>
+                    </li>
+
+                    <li class='sidebar-nav-item'>
+                        <a href='quadras.php'>Quadras</a>
+                    </li>
+            ";
+            }   
+        ?>
 
     </ul>
 </nav>
