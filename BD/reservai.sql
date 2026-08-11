@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/08/2026 às 22:38
+-- Tempo de geração: 11/08/2026 às 16:29
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -43,7 +43,8 @@ CREATE TABLE `quadras` (
 
 INSERT INTO `quadras` (`idQuadra`, `fotoQuadra`, `nomeQuadra`, `esportes`, `localizacao`, `horarioAbertura`, `horarioFechamento`) VALUES
 (1, 'assets/img/interiorQuadraIF2.jpg', 'Quadra IFPR', 'poliesportiva', 'PR-160, km 19,5 Jardim Bandeirantes, Telêmaco Borba - PR', '07:30:00', '22:00:00'),
-(2, 'assets/img/interiorQuadraIF2.jpg', 'Quadra Teste', 'Teste', 'Teste Teste Teste', '08:00:00', '21:00:00');
+(2, 'assets/img/interiorQuadraIF2.jpg', 'Quadra Teste', 'Teste', 'Teste Teste Teste', '08:00:00', '21:00:00'),
+(3, 'assets/img/furtadao.jpg', 'Furtadão', 'poliesportivo', 'Avenida das Nações, s/n - Centro, Telêmaco Borba', '09:00:00', '23:00:00');
 
 -- --------------------------------------------------------
 
@@ -85,20 +86,21 @@ CREATE TABLE `usuarios` (
   `dataNascimentoUsuario` date NOT NULL,
   `telefoneUsuario` char(11) NOT NULL,
   `emailUsuario` varchar(100) NOT NULL,
-  `senhaUsuario` varchar(100) NOT NULL
+  `senhaUsuario` varchar(100) NOT NULL,
+  `nivelUsuario` varchar(15) NOT NULL DEFAULT 'usuario'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `cpfUsuario`, `nomeUsuario`, `dataNascimentoUsuario`, `telefoneUsuario`, `emailUsuario`, `senhaUsuario`) VALUES
-(1, '13300080900', 'Cesar Augusto', '2008-05-02', '42998069904', '20241tbor0020025@estudantes.ifpr.edu.br', '281d5cbef8ded4e9bee409e3b9c67ab2'),
-(3, '48260112965', 'Miguel Gustavo', '2009-04-02', '42998643553', 'miguelgustavovm27@gmail.com', 'a5aad544b38a088b35b395645efe0d61'),
-(4, '36528291900', 'Alan de Souza Vanes', '2008-06-06', '66996309666', 'baixinhodesouzaa@gmail.com', '564f4bcd11273b8ea6b49fbe2dc2ad1c'),
-(5, '97194506904', 'Fulano', '2001-11-07', '42900000000', 'fulano@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(6, '60533326907', 'ciclano', '1998-02-21', '42933333333', 'ciclano@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b'),
-(7, '04533601901', 'Júlio', '2004-10-08', '42987654321', 'julio@gmail.com', '113180fa10fcf7a118ecdbcd21c4cd24');
+INSERT INTO `usuarios` (`idUsuario`, `cpfUsuario`, `nomeUsuario`, `dataNascimentoUsuario`, `telefoneUsuario`, `emailUsuario`, `senhaUsuario`, `nivelUsuario`) VALUES
+(1, '13300080900', 'Cesar Augusto', '2008-05-02', '42998069904', '20241tbor0020025@estudantes.ifpr.edu.br', '281d5cbef8ded4e9bee409e3b9c67ab2', 'administrador'),
+(3, '48260112965', 'Miguel Gustavo', '2009-04-02', '42998643553', 'miguelgustavovm27@gmail.com', 'a5aad544b38a088b35b395645efe0d61', 'usuario'),
+(4, '36528291900', 'Alan de Souza Vanes', '2008-06-06', '66996309666', 'baixinhodesouzaa@gmail.com', '564f4bcd11273b8ea6b49fbe2dc2ad1c', 'usuario'),
+(5, '97194506904', 'Fulano', '2001-11-07', '42900000000', 'fulano@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055', 'usuario'),
+(6, '60533326907', 'ciclano', '1998-02-21', '42933333333', 'ciclano@gmail.com', '4a7d1ed414474e4033ac29ccb8653d9b', 'usuario'),
+(7, '04533601901', 'Júlio', '2004-10-08', '42987654321', 'julio@gmail.com', '113180fa10fcf7a118ecdbcd21c4cd24', 'usuario');
 
 --
 -- Índices para tabelas despejadas
@@ -133,7 +135,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `quadras`
 --
 ALTER TABLE `quadras`
-  MODIFY `idQuadra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idQuadra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `reservas`
