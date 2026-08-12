@@ -82,7 +82,7 @@
                 </div>
                 <div class="row gx-0">
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="quadras.php">
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h2" style="color:white;">Quadra IFPR</div>
@@ -93,21 +93,21 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="quadras.php">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2"></div>
-                                    <p class="mb-0"></p>
+                                    <div class="h2" style="color:white;">Ginásio Furtadão</div>
+                                    <p class="mb-0">Ginásio poliesportivo locanizado no centro de Telêmaco Borba.</p>
                                 </div>
                             </div>
-                            <img class="img-fluid" src="assets/img/reservaiEmBreve.jpg" alt="Em breve" id="emBreve" />
+                            <img class="img-fluid" src="assets/img/furtadao2.jpg" alt="Em breve" id="emBreve" />
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="quadras.php">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2"></div>
+                                    <div class="h2" style="color:white;"></div>
                                     <p class="mb-0"></p>
                                 </div>
                             </div>
@@ -115,10 +115,10 @@
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a class="portfolio-item" href="#!">
+                        <a class="portfolio-item" href="quadras.php">
                             <div class="caption">
                                 <div class="caption-content">
-                                    <div class="h2"></div>
+                                    <div class="h2" style="color:white;"></div>
                                     <p class="mb-0"></p>
                                 </div>
                             </div>

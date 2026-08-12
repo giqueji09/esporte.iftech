@@ -19,6 +19,7 @@
         $idQuadra   = $Quadra['idQuadra'];
         $fotoQuadra = $Quadra['fotoQuadra'];
         $nomeQuadra = $Quadra['nomeQuadra'];
+        $localizacao = $Quadra['localizacao'];
         $horarioAbertura = $Quadra['horarioAbertura'];
         $horarioFechamento = $Quadra['horarioFechamento'];
 
@@ -33,7 +34,8 @@
                         <img class='img-fluid w-100 h-100' src='$fotoQuadra' style='object-fit: cover;'/>
                     </div>
                     <div class='h5 text-center' style='color: #1a2e17;'>$nomeQuadra</div>
-                    <div class='p text-center' style='color: #1a2e17;'>Abre $horarioAberturaCortada até $horarioFechamentoCortada</div>
+                    <div class='p text-center' style='color: #1a2e17;'>Aberta das $horarioAberturaCortada até $horarioFechamentoCortada</div>
+                    <div class='p text-center' style='color: #1a2e17;'>$localizacao</div>
 
                 </a>
             </div>
