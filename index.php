@@ -78,7 +78,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="content-section-heading text-center">
                     <h3 class="text-secondary mb-0">Catálogo</h3>
-                    <h2 class="mb-5">Alguma das Quadras disponíveis</h2>
+                    <h2 class="mb-5">Algumas das Quadras disponíveis</h2>
                 </div>
                 <div class="row gx-0">
                     <div class="col-lg-6">
@@ -97,34 +97,13 @@
                             <div class="caption">
                                 <div class="caption-content">
                                     <div class="h2" style="color:white;">Ginásio Furtadão</div>
-                                    <p class="mb-0">Ginásio poliesportivo locanizado no centro de Telêmaco Borba.</p>
+                                    <p class="mb-0">Ginásio poliesportivo localizado no centro de Telêmaco Borba.</p>
                                 </div>
                             </div>
                             <img class="img-fluid" src="assets/img/furtadao2.jpg" alt="Em breve" id="emBreve" />
                         </a>
                     </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="quadras.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2" style="color:white;"></div>
-                                    <p class="mb-0"></p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/reservaiEmBreve.jpg" alt="Em Breve" />
-                        </a>
-                    </div>
-                    <div class="col-lg-6">
-                        <a class="portfolio-item" href="quadras.php">
-                            <div class="caption">
-                                <div class="caption-content">
-                                    <div class="h2" style="color:white;"></div>
-                                    <p class="mb-0"></p>
-                                </div>
-                            </div>
-                            <img class="img-fluid" src="assets/img/reservaiEmBreve.jpg" alt="..." />
-                        </a>
-                    </div>
+
                 </div>
             </div>
         </section>

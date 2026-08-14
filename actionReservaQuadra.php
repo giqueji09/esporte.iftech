@@ -98,6 +98,27 @@
                     }
                 }
 
+                // Validação de Horário de Funcionamento da Quadra
+                if(!$erroPreenchimento){
+                    $queryHorarios = "SELECT horarioAbertura, horarioFechamento FROM quadras WHERE idQuadra = '$idQuadraReservada'";
+                    $resultadoHorarios = mysqli_query($conn, $queryHorarios);
+                    
+                    if($dadosQuadra = mysqli_fetch_assoc($resultadoHorarios)){
+                        $horarioAbertura = $dadosQuadra['horarioAbertura'];
+                        $horarioFechamento = $dadosQuadra['horarioFechamento'];
+
+                        // Verifica se o início é antes da abertura ou se o fim é depois do fechamento
+                        if($horarioInicio < $horarioAbertura || $horarioFim > $horarioFechamento){
+                            // Formata os horários para exibição amigável (sem os segundos)
+                            $aberturaFormatada = date('H:i', strtotime($horarioAbertura));
+                            $fechamentoFormatado = date('H:i', strtotime($horarioFechamento));
+                            
+                            echo "<div class='alert alert-warning text-center'>A quadra selecionada funciona apenas das <strong>$aberturaFormatada</strong> às <strong>$fechamentoFormatado</strong>!</div>";
+                            $erroPreenchimento = true;
+                        }
+                    }
+                }
+
                 //Prevenção de conflito de horários no mesmo local
                 if(!$erroPreenchimento){
                     // A lógica verifica se existe alguma reserva onde o Início é menor que o Novo Fim E o Fim é maior que o Novo Início
