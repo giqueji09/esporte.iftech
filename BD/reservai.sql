@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 11/08/2026 às 16:29
+-- Tempo de geração: 14/08/2026 às 14:57
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -43,7 +43,7 @@ CREATE TABLE `quadras` (
 
 INSERT INTO `quadras` (`idQuadra`, `fotoQuadra`, `nomeQuadra`, `esportes`, `localizacao`, `horarioAbertura`, `horarioFechamento`) VALUES
 (1, 'assets/img/interiorQuadraIF2.jpg', 'Quadra IFPR', 'poliesportiva', 'PR-160, km 19,5 Jardim Bandeirantes, Telêmaco Borba - PR', '07:30:00', '22:00:00'),
-(2, 'assets/img/interiorQuadraIF2.jpg', 'Quadra Teste', 'Teste', 'Teste Teste Teste', '08:00:00', '21:00:00'),
+(2, 'assets/img/quadra_teste.jpg', 'Quadra Teste', 'Poliesportiva', 'Rua dos bobos, n°0', '08:00:00', '21:00:00'),
 (3, 'assets/img/furtadao.jpg', 'Furtadão', 'poliesportivo', 'Avenida das Nações, s/n - Centro, Telêmaco Borba', '09:00:00', '23:00:00');
 
 -- --------------------------------------------------------
