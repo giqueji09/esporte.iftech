@@ -35,6 +35,7 @@
 
     //2ª Parte: Exibe o cabeçalho da tabela
     echo "
+        <div class='table-responsive'>
         <table class='table'>
             <thead class='table-dark'>
                 <tr>
@@ -86,6 +87,7 @@
     // 5ª Parte: Encerra a tabela e a conexão com o Banco de Dados
     echo "</tbody>";
     echo "</table>";
+    echo "</div>";
     mysqli_close($conn); //Encerra a conexão com o Banco de Dados
 ?>
 
