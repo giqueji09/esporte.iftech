@@ -73,6 +73,19 @@
                 <div class="invalid-feedback"></div>
                 <div class="invalid-feedback">O horário deve ser em horas cheias (ex: 13:00).</div>
             </div>
+
+            <div class="form-floating mt-3 mb-3">
+                <select name="esporteReserva" id="esporteReserva" placeholder="Esporte a ser praticado" class="form-control">
+                    <option value="Futsal">Futsal</option>
+                    <option value="Vôlei">Vôlei</option>
+                    <option value="Basquete">Basquete</option>
+                    <option value="Handbol">Handbol</option>
+                    <option value="Queimada">Queimada</option>
+                </select>
+                <label for="esporteReserva">Esporte a ser praticado</label>
+                <div class="valid-feedback"></div>
+                <div class="invalid-feedback"></div>
+            </div>
             <button type="submit" class="btn btn-outline-dark">Cadastrar</button>
 
         </form>

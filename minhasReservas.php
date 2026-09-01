@@ -17,7 +17,8 @@
         quadras.nomeQuadra, 
         reservas.dataReserva, 
         reservas.horarioInicio, 
-        reservas.horarioFim, 
+        reservas.horarioFim,
+        reservas.esporteReserva, 
         reservas.statusReserva
     FROM 
         reservas
@@ -43,6 +44,7 @@
                     <th>DATA DE RESERVA</th>
                     <th>HORÁRIO INICIO RESERVA</th>
                     <th>HORÁRIO FIM DA RESERVA</th>
+                    <th>ESPORTE RESERVA</th>
                     <th>STATUS RESERVA</th>
                     <th></th>
                 </tr>
@@ -60,6 +62,7 @@
         $anoReserva          = substr($dataReserva, 0, 4);
         $horarioInicio       = $reservas['horarioInicio'];
         $horarioFim          = $reservas['horarioFim'];
+        $esporteReserva = $reservas['esporteReserva'];
         $statusReserva       = $reservas['statusReserva'];
 
         $botaoCancelar = "";
@@ -79,6 +82,7 @@
                 <td>$diaReserva/$mesReserva/$anoReserva</td>
                 <td>$horarioInicio</td>
                 <td>$horarioFim</td>
+                <td>$esporteReserva</td>
                 <td>$statusReserva</td>
                 <td>$botaoCancelar</td>
             </tr>

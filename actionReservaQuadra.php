@@ -46,6 +46,14 @@
                 $horarioFim = filtrar_entrada($_POST["horarioFim"]);
             }
 
+            // Validação do Esporte Reserva
+            if(empty($_POST["esporteReserva"])){
+                echo "<div class='alert alert-warning text-center'>O campo <strong>ESPORTE RESERVA</strong> é obrigatório!</div>";
+                $erroPreenchimento = true;
+            } else {
+                $esporteReserva = filtrar_entrada($_POST["esporteReserva"]);
+            }
+
             // Executa as verificações de regras de negócio se não houver erros básicos de preenchimento
             if(!$erroPreenchimento){
                 
@@ -140,8 +148,8 @@
                     
                     if($horarioInicio)
                     // Query alinhada com a estrutura da tabela
-                    $inserirReserva = "INSERT INTO reservas (idReservante, idQuadraReservada, dataReserva, horarioInicio, horarioFim) 
-                                       VALUES ('$idReservante', '$idQuadraReservada', '$dataReserva', '$horarioInicio', '$horarioFim')";
+                    $inserirReserva = "INSERT INTO reservas (idReservante, idQuadraReservada, dataReserva, horarioInicio, horarioFim, esporteReserva) 
+                                       VALUES ('$idReservante', '$idQuadraReservada', '$dataReserva', '$horarioInicio', '$horarioFim', '$esporteReserva')";
                     
                     // Executa a QUERY principal
                     if(mysqli_query($conn, $inserirReserva)){
@@ -179,6 +187,10 @@
                                     <tr>
                                         <th>HORÁRIO</th>
                                         <td>$horarioInicio às $horarioFim</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ESPORTE RESERVA</th>
+                                        <td>$esporteReserva</td>
                                     </tr>
                                 </table>
                             </div>

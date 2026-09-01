@@ -36,6 +36,7 @@
                     <div class='h5 text-center' style='color: #1a2e17;'>$nomeQuadra</div>
                     <div class='p text-center' style='color: #1a2e17;'>Aberta das $horarioAberturaCortada até $horarioFechamentoCortada</div>
                     <div class='p text-center' style='color: #1a2e17;'>$localizacao</div>
+                    
 
                 </a>
             </div>

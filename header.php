@@ -83,6 +83,10 @@
                         </li>
 
                         <li class='sidebar-nav-item'>
+                            <a href='formVerReservasQUadras.php'>Ver Reservas de Quadras</a>
+                        </li>
+
+                        <li class='sidebar-nav-item'>
                             <a href='logout.php'>Sair</a>
                         </li>
 
@@ -102,6 +106,10 @@
 
                         <li class='sidebar-nav-item'>
                             <a href='quadras.php'>Quadras</a>
+                        </li>
+
+                        <li class='sidebar-nav-item'>
+                            <a href='formVerReservasQUadras.php'>Ver Reservas de Quadras</a>
                         </li>
 
 
